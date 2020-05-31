@@ -1,0 +1,26 @@
+
+.head{
+  display: flex;
+  width: 500px;
+  border: 1px solid;
+  border-radius: 10px;
+  padding: 10px;
+  justify-content: space-between;
+}
+.head .actions{
+  display: flex;
+  width: 200px;
+  justify-content: space-between;
+}
+
+.delete {
+  cursor: pointer;
+}
+
+.generate{
+  cursor: pointer;
+}
+
+.composition-item{
+  padding-left: 40px;
+}

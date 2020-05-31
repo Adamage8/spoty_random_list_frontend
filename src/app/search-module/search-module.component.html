@@ -1,0 +1,30 @@
+<div>
+  <form #addMediaForm="ngForm" (ngSubmit)="onSearch(addMediaForm.value)">
+    <label for="media">Media</label>
+    <input type="text" name="media" id="media" ngModel />
+    <button type="submit">Keres</button>
+  </form>
+  <div id="results">
+    <div class="items">
+      <div class="title">Előadók</div>
+      <div [ngClass]="{ 'selected': item.id === selectedId }" (click)="onSelect(item.id, item.name)" *ngFor="let item of artistResults" class="item">
+        <img class="result-image" src="{{ item.image }}" />
+        <div class="title">{{ item.name }}</div>
+      </div>
+    </div>
+    <div class="items">
+      <div class="title">Albumok</div>
+      <div [ngClass]="{ 'selected': item.id === selectedId }" (click)="onSelect(item.id, item.name)" *ngFor="let item of albumResults" class="item">
+        <img class="result-image" src="{{ item.image }}" />
+        <div class="title">{{ item.name }}</div>
+      </div>
+    </div>
+    <div class="items">
+      <div class="title">Lejátszási listák</div>
+      <div class="item" [ngClass]="{ 'selected': item.id === selectedId }" (click)="onSelect(item.id, item.name)" *ngFor="let item of playlistResults">
+        <img class="result-image" src="{{ item.image }}" />
+        <div class="title">{{ item.name }}</div>
+      </div>
+    </div>
+  </div>
+</div>

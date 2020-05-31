@@ -1,0 +1,15 @@
+.content{
+  display: flex;
+  justify-content: space-between;
+}
+.content .right-side{
+  width: 60%;
+}
+
+.content .left-side{
+  width: 38%
+}
+
+.compositions{
+  margin-bottom: 100px;
+}

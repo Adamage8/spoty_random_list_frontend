@@ -1,0 +1,30 @@
+<section *ngIf="hasUser()">
+  <div class="my-compositions">
+    <div class="composition" *ngFor="let composition of compositions">
+      <div class="head">
+        <div class="title">{{ composition.name }} ({{ composition.numberOfItems }} szám)</div>
+        <div class="actions">
+          <div class="delete" (click)="onDelete(composition.id)">Törlés</div>
+          <a class="edit" routerLink="{{ '../composition/' + composition.id }}">Módosítás</a>
+          <div class="generate">Generálás</div>
+        </div>
+      </div>
+      <div class="composition-items">
+        <div *ngFor="let item of composition.compositionItems" class="composition-item">
+          {{ item.searchName }} - {{ item.percent }}%
+        </div>
+      </div>
+      <div class="comments">
+        <div class="comment" *ngFor="let comment of composition.comments">{{ comment.text }}</div>
+        <form #commentForm="ngForm" (ngSubmit)="onSendComment(composition, commentForm.value)">
+          <input name="comment" type="text" ngModel>
+          <button>Küldés</button>
+        </form>
+      </div>
+    </div>
+    <a class="add-new" routerLink="../composition">Új hozzáadása</a>
+  </div>
+  <div class="suggested-compositions"></div>
+</section>
+
+<section *ngIf="!hasUser()">Ehhez a funkcióhoz be kell jelentkeznie</section>

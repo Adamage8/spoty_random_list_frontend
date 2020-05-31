@@ -1,0 +1,36 @@
+<div *ngIf="hasUser()" class="content">
+  <div class="left-side">
+    <form #addPercentageForm="ngForm" (ngSubmit)="onAdd(addPercentageForm.value)">
+      <label for="percentage">Százalék</label>
+      <input type="text" name="percentage" id="percentage" ngModel />
+      <button type="submit">Hozzáad</button>
+    </form>
+    <div class="compositions">
+      <div *ngFor="let compositionItem of composition.compositionItems">
+        {{ compositionItem.percent }}% - {{ compositionItem.searchName }}
+      </div>
+    </div>
+    <form [formGroup]="saveForm" (ngSubmit)="onSave(saveForm.value)">
+      <div>
+        <label for="name">Név</label>
+        <input type="text" name="name" id="name" placeholder="Név" formControlName="name" />
+      </div>
+      <div>
+        <label for="numberOfItems">Elemek száma</label>
+        <input
+          type="number"
+          name="numberOfItems"
+          id="numberOfItems"
+          placeholder="Elemek száma"
+          formControlName="numberOfItems"
+        />
+      </div>
+      <button>Mentés</button>
+    </form>
+  </div>
+  <div class="right-side">
+    <app-search-module (onSelectEmitter)="onSelect($event)"></app-search-module>
+  </div>
+</div>
+
+<div *ngIf="!hasUser()">Ehhez a funkcióhoz be kell jelentkeznie</div>
